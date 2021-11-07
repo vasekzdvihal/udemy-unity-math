@@ -9,6 +9,9 @@ TagManager:
   - INTELLIGENCE
   - FLY
   - INVISIBLE
+  - ANTIMAGIC
+  - MULTIPLE
+  - ANTIMULTIPLE
   layers:
   - Default
   - TransparentFX
