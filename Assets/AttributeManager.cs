@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class AttributeManager : MonoBehaviour
 {
+    // TODO https://stackoverflow.com/questions/8447/what-does-the-flags-enum-attribute-mean-in-c
     public static int MAGIC = 16;
     public static int INTELLIGENCE = 8;
     public static int CHARISMA = 4;
@@ -22,6 +23,10 @@ public class AttributeManager : MonoBehaviour
         if (other.gameObject.CompareTag("CHARISMA")) attributes |= CHARISMA;
         if (other.gameObject.CompareTag("FLY")) attributes |= FLY;
         if (other.gameObject.CompareTag("INVISIBLE")) attributes |= INVISIBLE; 
+        if (other.gameObject.CompareTag("ANTIMAGIC")) attributes &= ~MAGIC; 
+        
+        if (other.gameObject.CompareTag("MULTIPLE")) attributes |= (INTELLIGENCE | MAGIC | CHARISMA); 
+        if (other.gameObject.CompareTag("ANTIMULTIPLE")) attributes &= ~(INTELLIGENCE | MAGIC); 
     }
 
     // Start is called before the first frame update
