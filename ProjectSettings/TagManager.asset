@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - MAGIC
+  - CHARISMA
+  - INTELLIGENCE
+  - FLY
+  - INVISIBLE
   layers:
   - Default
   - TransparentFX
