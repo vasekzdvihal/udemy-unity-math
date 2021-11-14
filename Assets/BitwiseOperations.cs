@@ -12,6 +12,31 @@ namespace DefaultNamespace
             Console.WriteLine(Convert.ToString(b, 2)); // 11110000111100001111000011110011
         }
 
+        public static void LeftShift()
+        {
+            // The << operator shifts its left-hand operand left by the number of bits defined by its right-hand operand.
+            // The left-shift operation discards the high-order bits that are outside the range of the result type and sets the low-order empty
+            // bit positions to zero, as the following example shows:
+            
+            uint x = 0b_1100_1001_0000_0000_0000_0000_0001_0001;
+            Console.WriteLine($"Before: {Convert.ToString(x, toBase: 2)}"); // 11001001000000000000000000010001
+
+            uint y = x << 4;
+            Console.WriteLine($"After:  {Convert.ToString(y, toBase: 2)}"); // 10010000000000000000000100010000
+        }
+
+        public static void RightShift()
+        {
+            // The >> operator shifts its left-hand operand right by the number of bits defined by its right-hand operand.
+            // The right-shift operation discards the low-order bits, as the following example shows:
+            
+            uint x = 0b_1001; 
+            Console.WriteLine($"Before: {Convert.ToString(x, toBase: 2), 4}"); // 1001
+
+            uint y = x >> 2;
+            Console.WriteLine($"After:  {Convert.ToString(y, toBase: 2), 4}"); // 10
+        }
+
         public static void LogicalAND()
         {
             // The & operator computes the bitwise logical AND of its integral operands:
