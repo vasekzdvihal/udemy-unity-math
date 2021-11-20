@@ -17,22 +17,22 @@ public class AttributeManager : MonoBehaviour
     {
         if(other.gameObject.tag == "BLUE_KEY")
         {
-            attributes |= BLUEKEY;
+            attributes ^= BLUEKEY;
             Destroy(other.gameObject);
         }
         else if (other.gameObject.tag == "RED_KEY")
         {
-            attributes |= REDKEY;
+            attributes ^= REDKEY;
             Destroy(other.gameObject);
         }
         else if (other.gameObject.tag == "GREEN_KEY")
         {
-            attributes |= GREENKEY;
+            attributes ^= GREENKEY;
             Destroy(other.gameObject);
         }
         else if (other.gameObject.tag == "GOLD_KEY")
         {
-            attributes |= (BLUEKEY | REDKEY | GREENKEY);
+            attributes ^= (BLUEKEY | REDKEY | GREENKEY);
             Destroy(other.gameObject);
         }
     }

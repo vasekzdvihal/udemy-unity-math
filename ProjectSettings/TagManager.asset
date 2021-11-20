@@ -12,6 +12,14 @@ TagManager:
   - ANTIMAGIC
   - MULTIPLE
   - ANTIMULTIPLE
+  - BLUE_DOOR
+  - GREEN_DOOR
+  - RED_DOOR
+  - GOLD_KEY
+  - RED_KEY
+  - PURPLE_DOOR
+  - GREEN_KEY
+  - BLUE_KEY
   layers:
   - Default
   - TransparentFX
@@ -22,9 +30,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Sphere
+  - Cube
+  - Capsule
   - 
   - 
   - 
