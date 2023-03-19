@@ -51,6 +51,7 @@ ExportedObj/
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
+*.log
 
 # Unity3D generated file on crash reports
 sysinfo.txt
@@ -73,33 +74,9 @@ crashlytics-build.properties
 
 
 # Library folders
-Bitwise/Library/
-Bitwise/Logs/
-Bitwise/Temp/
-Bitwise/Assets/Editor/
-Ponts2D/Library/
-Ponts2D/Logs/
-Ponts2D/Temp/
-Ponts2D/Assets/Editor/
-[Aa]ssets/Editor/Waka
-Points2D/Library/
+**/Library/**
+**/Logs/**
+**/Temp/**
+**/Assets/Editor/**
 
-*.log
-Points2D/Temp/UnityLockfile
-Points2D/Temp/PropertyDatabase_1265138678
-Points2D/Temp/PropertyDatabase_2066312223
-Points2D/Temp/workerlic
-Points2D/Temp/FSTimeGet-719c2253f3a0df14dae5d82daf79052e
-Points2D/Temp/FSTimeGet-5bb21f9bbcb2d0d4f8f8de4930394796
-Points2D/Temp/FSTimeGet-5211fe3c32dbb4b458df1a5103bd91a2
-Points2D/Logs/shadercompiler-UnityShaderCompiler.exe5.log
-Points2D/Logs/shadercompiler-UnityShaderCompiler.exe4.log
-Points2D/Logs/shadercompiler-UnityShaderCompiler.exe3.log
-Points2D/Logs/shadercompiler-UnityShaderCompiler.exe2.log
-Points2D/Logs/shadercompiler-UnityShaderCompiler.exe1.log
-Points2D/Logs/shadercompiler-UnityShaderCompiler.exe0.log
-Points2D/Logs/shadercompiler-AssetImportWorker0.log
-Points2D/Logs/AssetImportWorker1.log
-Points2D/Logs/AssetImportWorker0.log
-*.log
-*.log
+[Aa]ssets/Editor/Waka
