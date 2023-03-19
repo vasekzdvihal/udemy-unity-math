@@ -4,20 +4,15 @@ using UnityEngine;
 
 public class DrawLines : MonoBehaviour
 {
-    Coords point = new Coords(10, 20);
-    
-    
-    // Start is called before the first frame update
+  // Start is called before the first frame update
     void Start()
     {
-       Debug.Log(point.ToString());
-       
-       Coords.DrawPoint(new Coords(0, 0), 2, Color.grey); // Origin
-       Coords.DrawLine(new Coords(0, 100), new Coords(0, -100), 1, Color.green); // Y axis
-       Coords.DrawLine(new Coords(160, 0), new Coords(-160, 0), 1, Color.red); // X axis
-       
-       // Gemini
-       var pollux = new Coords(2, 18);
+      // DrawGeminiStarSign();
+    }
+    
+    void DrawGeminiStarSign()
+    {
+               var pollux = new Coords(2, 18);
        var castor = new Coords(5, 28);
        var alhena = new Coords(23, 8);
        

@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 70698283}
   - component: {fileID: 70698282}
+  - component: {fileID: 70698284}
   m_Layer: 0
   m_Name: PointManager
   m_TagString: Untagged
@@ -167,6 +168,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &70698284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70698281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8214b794974d54f4098010162bf3fc09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 20
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
