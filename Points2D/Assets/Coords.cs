@@ -18,15 +18,28 @@ public class Coords
         return $"X: {x} Y: {y} Z: {z}";
     }
 
-    static public void DrawPoint(Coords position, float width, Color color)
+    public static void DrawPoint(Coords position, float width, Color color)
     {
-        GameObject line = new GameObject("Point_" + position.ToString());
-        LineRenderer lineRenderer = line.AddComponent<LineRenderer>();
+        var line = new GameObject("Point_" + position.ToString());
+        var lineRenderer = line.AddComponent<LineRenderer>();
         lineRenderer.material = new Material(Shader.Find("Unlit/Color"));
         lineRenderer.material.color = color;
         lineRenderer.positionCount = 2;
         lineRenderer.SetPosition(0, new Vector3(position.x - width / 3.0f, position.y - width / 3.0f, position.z));
         lineRenderer.SetPosition(1, new Vector3(position.x + width / 3.0f, position.y + width / 3.0f, position.z));
+        lineRenderer.startWidth = width;
+        lineRenderer.endWidth = width;
+    }
+
+    public static void DrawLine(Coords start, Coords end, float width, Color color)
+    {
+        var line = new GameObject($"Point_{start}_{end}");
+        var lineRenderer = line.AddComponent<LineRenderer>();
+        lineRenderer.material = new Material(Shader.Find("Unlit/Color"));
+        lineRenderer.material.color = color;
+        lineRenderer.positionCount = 2;
+        lineRenderer.SetPosition(0, new Vector3(start.x, start.y, start.z));
+        lineRenderer.SetPosition(1, new Vector3(end.x, end.y, end.z));
         lineRenderer.startWidth = width;
         lineRenderer.endWidth = width;
     }
