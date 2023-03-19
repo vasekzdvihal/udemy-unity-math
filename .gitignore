@@ -78,5 +78,7 @@ crashlytics-build.properties
 **/Logs/**
 **/Temp/**
 **/Assets/Editor/**
+**/UserSettings/**
 
 [Aa]ssets/Editor/Waka
+Points2D/UserSettings/Layouts/default-2021.dwlt
