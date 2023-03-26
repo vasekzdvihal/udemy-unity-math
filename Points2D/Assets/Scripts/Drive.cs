@@ -6,35 +6,23 @@ using UnityEngine.UI;
 
 public class Drive : MonoBehaviour
 {
-    private readonly Vector2 _yMovement = new Vector2(0, 1);
-    private readonly Vector2 _xMovement = new Vector2(1, 0);
-    private float _speed = 0.1f;
+    public GameObject fuel;
+    public float speed = 0.01f;
+
+    private Vector3 direction;
+    private float stoppingDistance = 0.1f;
+
+    void Start()
+    {
+        // Vector where the tank is heading
+        this.direction = fuel.transform.position - this.transform.position;
+    }
     
     void Update()
     {
-        var position = this.transform.position;
-
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+        if (Vector3.Distance(this.transform.position, fuel.transform.position) > stoppingDistance)
         {
-            position.x += _yMovement.x * _speed;
-            position.y += _yMovement.y * _speed;
+            this.transform.position += direction * speed;
         }
-        else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
-        {
-            position.x += -_yMovement.x * _speed;
-            position.y += -_yMovement.y * _speed;
-        }
-        else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-        {
-            position.x += -_xMovement.x * _speed;
-            position.y += -_xMovement.y * _speed;
-        }
-        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-        {
-            position.x += _xMovement.x * _speed;
-            position.y += _xMovement.y * _speed;
-        }
-        
-        this.transform.position = position;
     }
 }
