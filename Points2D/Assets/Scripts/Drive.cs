@@ -6,37 +6,35 @@ using UnityEngine.UI;
 
 public class Drive : MonoBehaviour
 {
-    public float speed = 10.0f;
-    public float rotationSpeed = 100.0f;
-    public Text energyAmt;
-    private Vector3 currentLocation;
-
-    void Start()
-    {
-        currentLocation = this.transform.position;
-    }
+    private readonly Vector2 _yMovement = new Vector2(0, 1);
+    private readonly Vector2 _xMovement = new Vector2(1, 0);
+    private float _speed = 0.1f;
     
     void Update()
     {
-        if (float.Parse(energyAmt.text) <= 0) return;
+        var position = this.transform.position;
+
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+        {
+            position.x += _yMovement.x * _speed;
+            position.y += _yMovement.y * _speed;
+        }
+        else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+        {
+            position.x += -_yMovement.x * _speed;
+            position.y += -_yMovement.y * _speed;
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
+            position.x += -_xMovement.x * _speed;
+            position.y += -_xMovement.y * _speed;
+        }
+        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        {
+            position.x += _xMovement.x * _speed;
+            position.y += _xMovement.y * _speed;
+        }
         
-        // Get the horizontal and vertical axis.
-        // By default they are mapped to the arrow keys.
-        // The value is in the range -1 to 1
-        float translation = Input.GetAxis("Vertical") * speed;
-        float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
-
-        // Make it move 10 meters per second instead of 10 meters per frame...
-        translation *= Time.deltaTime;
-        rotation *= Time.deltaTime;
-
-        // Move translation along the object's z-axis
-        transform.Translate(0, translation, 0);
-
-        // Rotate around our y-axis
-        transform.Rotate(0, 0, -rotation);
-
-        energyAmt.text = (float.Parse(energyAmt.text) - Vector3.Distance(currentLocation, this.transform.position)) + "";
-        currentLocation = this.transform.position;
+        this.transform.position = position;
     }
 }
