@@ -8,7 +8,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\zdvih\\source\\GitHub\\udemy-unity-math\\Points2D\\Assembly-CSharp.csproj",
-        "projectName": "Assembly-CSharp.csproj",
+        "projectName": "Assembly-CSharp",
         "projectPath": "C:\\Users\\zdvih\\source\\GitHub\\udemy-unity-math\\Points2D\\Assembly-CSharp.csproj",
         "packagesPath": "C:\\Users\\zdvih\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\zdvih\\source\\GitHub\\udemy-unity-math\\Points2D\\obj\\",

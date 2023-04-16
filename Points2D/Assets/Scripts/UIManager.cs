@@ -13,8 +13,7 @@ public class UIManager : MonoBehaviour
 
     public void AddEnergy(string amt)
     {
-        int n;
-        if (int.TryParse(amt, out n))
+        if (int.TryParse(amt, out var n))
         {
             energyAmt.text = amt;
         }
