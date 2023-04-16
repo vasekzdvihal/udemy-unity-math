@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Drive : MonoBehaviour
 {
     public GameObject fuel;
-    public float speed = 0.1f;
+    public float speed = 5f;
 
     private Vector3 _direction;
     private const float StoppingDistance = 0.1f;
@@ -16,10 +16,11 @@ public class Drive : MonoBehaviour
     {
         // Vector where the tank is heading
         _direction = fuel.transform.position - this.transform.position;
-        var directionNormal = HolisticMath.GetNormal(new Coords(_direction));
+        var directionNormal = HolisticMath.NormalVector(new Coords(_direction));
         _direction = directionNormal.ToVector3();
-        var a = HolisticMath.Angle(new Coords(0, 1, 0), new Coords(_direction)) * 180.0f / Mathf.PI;
-        Debug.Log($"Angle to fuel: {a}");
+        var a = HolisticMath.Angle(new Coords(0, 1, 0), new Coords(_direction));
+        var rotatedDirection = HolisticMath.Rotate(new Coords(0, 1, 0), a);
+        this.transform.up = rotatedDirection.ToVector3();
     }
     
     void Update()

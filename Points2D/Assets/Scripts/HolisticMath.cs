@@ -5,7 +5,7 @@ public static class HolisticMath
     /// <summary>
     /// Normal vector = (x / |V|, y / |V|, z / |V|)
     /// </summary>
-    public static Coords GetNormal(Coords vector)
+    public static Coords NormalVector(Coords vector)
     {
         var lenght = Distance(vector, new Coords(0, 0, 0));
         vector.x /= lenght;
@@ -33,6 +33,23 @@ public static class HolisticMath
     {
         var dotDivide = Dot(vector1, vector2) / (Distance(new Coords(0, 0, 0), vector1) * Distance(new Coords(0, 0,0 ), vector2));
         return Mathf.Acos(dotDivide);
+    }
+
+    /// <summary>
+    /// <code>
+    /// vX = x * cos(angle) - y * sin(angle)
+    /// vY = y * sin(angle) + y * cos(angle)
+    /// v = (vX, vY, 0)
+    /// </code>
+    /// </summary>
+    /// <param name="vector">Vector v</param>
+    /// <param name="angle">Angle in radians</param>
+    /// <returns>Returns rotated /vector/ by /angle/</returns>
+    public static Coords Rotate(Coords vector, float angle)
+    {
+        var xVal = vector.x * Mathf.Cos(angle) - vector.y * Mathf.Sin(angle);
+        var yVal = vector.y * Mathf.Sin(angle) + vector.y * Mathf.Cos(angle);
+        return new Coords(xVal, yVal, 0);
     }
 
     #region Privates
