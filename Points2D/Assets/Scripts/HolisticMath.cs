@@ -3,6 +3,22 @@ using UnityEngine;
 
 public static class HolisticMath
 {
+    public static void LookAt(Transform transform, Vector3 target)
+    {
+        var up = new Coords(transform.up);
+        var direction = target - transform.position;
+
+        transform.up = Rotate(up, Angle(up, new Coords(direction)), Cross(up, NormalVector(new Coords(direction))).z < 0).ToVector3();
+    }
+
+    public static Coords LookAt(Coords forwardVector, Coords position, Coords focusPoint)
+    {
+        var direction = new Coords(focusPoint.x - position.x, focusPoint.y - position.y, position.z);
+        var angle = HolisticMath.Angle(forwardVector, direction);
+        var clockwise = Cross(forwardVector, direction).z < 0;
+        return Rotate(forwardVector, angle, clockwise);
+    }
+
     /// <summary>
     /// Normal vector = (x / |V|, y / |V|, z / |V|)
     /// </summary>
@@ -53,6 +69,17 @@ public static class HolisticMath
         return new Coords(xVal, yVal, 0);
     }
 
+    /// <summary>
+    /// <code>
+    /// vX = x * cos(angle) - y * sin(angle)
+    /// vY = y * sin(angle) + y * cos(angle)
+    /// v = (vX, vY, 0)
+    /// </code>
+    /// </summary>
+    /// <param name="vector">Vector v</param>
+    /// <param name="angle">Angle in radians</param>
+    /// <param name="clockwise">Determine, if you want turn clockwise or not</param>
+    /// <returns>Returns rotated /vector/ by /angle/</returns>
     public static Coords Rotate(Coords vector, float angle, bool clockwise)
     {
         if (clockwise) angle = 2 * Mathf.PI - angle;
