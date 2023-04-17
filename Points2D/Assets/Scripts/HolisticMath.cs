@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public static class HolisticMath
@@ -48,8 +49,31 @@ public static class HolisticMath
     public static Coords Rotate(Coords vector, float angle)
     {
         var xVal = vector.x * Mathf.Cos(angle) - vector.y * Mathf.Sin(angle);
-        var yVal = vector.y * Mathf.Sin(angle) + vector.y * Mathf.Cos(angle);
+        var yVal = vector.x * Mathf.Sin(angle) + vector.y * Mathf.Cos(angle);
         return new Coords(xVal, yVal, 0);
+    }
+
+    public static Coords Rotate(Coords vector, float angle, bool clockwise)
+    {
+        if (clockwise) angle = 2 * Mathf.PI - angle;
+        return Rotate(vector, angle);
+    }
+    
+    /// <summary>
+    /// <code>
+    /// v = (vx, vy, vz)
+    /// w = (wx, wy, wz)
+    /// v x w = (vy * wz - vz * wy, vz * wx - vx * wz, vx * wy - vy * wx)
+    /// </code>
+    /// </summary>
+    /// <param name="vector1">v - Direction, your currently facing</param>
+    /// <param name="vector2">w - Direction, you will be facing</param>
+    public static Coords Cross(Coords vector1, Coords vector2)
+    {
+        var xMult = vector1.y * vector2.z - vector1.z * vector2.y;
+        var yMult = vector1.z * vector2.x - vector1.x * vector2.z;
+        var zMult = vector1.x * vector2.y - vector1.y * vector2.x;
+        return new Coords(xMult, yMult, zMult);
     }
 
     #region Privates

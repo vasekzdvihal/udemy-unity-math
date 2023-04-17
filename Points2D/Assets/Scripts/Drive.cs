@@ -14,12 +14,17 @@ public class Drive : MonoBehaviour
 
     void Start()
     {
-        // Vector where the tank is heading
-        _direction = fuel.transform.position - this.transform.position;
+        var t = this.transform;
+        var up = new Coords(t.up);
+        
+        _direction = fuel.transform.position - t.position;
         var directionNormal = HolisticMath.NormalVector(new Coords(_direction));
         _direction = directionNormal.ToVector3();
-        var a = HolisticMath.Angle(new Coords(0, 1, 0), new Coords(_direction));
-        var rotatedDirection = HolisticMath.Rotate(new Coords(0, 1, 0), a);
+        var a = HolisticMath.Angle(up, new Coords(_direction));
+        
+        var clockwise = HolisticMath.Cross(up, directionNormal).z < 0;
+
+        var rotatedDirection = HolisticMath.Rotate(up, a, clockwise);
         this.transform.up = rotatedDirection.ToVector3();
     }
     
