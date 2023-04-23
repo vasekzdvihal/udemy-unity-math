@@ -9,34 +9,29 @@ public class Drive : MonoBehaviour
     public float speed = 10.0f;
     public float rotationSpeed = 100.0f;
     public Text energyAmt;
-    private Vector3 currentLocation;
+    public Text currentLocationText;
+    public Vector3 currentLocation;
 
     void Start()
     {
         currentLocation = this.transform.position;
     }
-    
+
     void Update()
     {
         if (float.Parse(energyAmt.text) <= 0) return;
         
-        // Get the horizontal and vertical axis.
-        // By default they are mapped to the arrow keys.
-        // The value is in the range -1 to 1
-        float translation = Input.GetAxis("Vertical") * speed;
-        float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
-
-        // Make it move 10 meters per second instead of 10 meters per frame...
+        var translation = Input.GetAxis("Vertical") * speed;
+        var rotation = Input.GetAxis("Horizontal") * rotationSpeed;
+        
         translation *= Time.deltaTime;
         rotation *= Time.deltaTime;
-
-        // Move translation along the object's z-axis
-        transform.Translate(0, translation, 0);
-
-        // Rotate around our y-axis
-        transform.Rotate(0, 0, -rotation);
-
+        
+        transform.position = HolisticMath.Translate(new Coords(transform.position), new Coords(transform.up),new Coords(0, translation, 0)).ToVector3();
+        transform.up = HolisticMath.Rotate(new Coords(transform.up), -rotation * Mathf.Deg2Rad).ToVector3();
+        
         energyAmt.text = (float.Parse(energyAmt.text) - Vector3.Distance(currentLocation, this.transform.position)) + "";
         currentLocation = this.transform.position;
+        currentLocationText.text = currentLocation + "";
     }
 }
