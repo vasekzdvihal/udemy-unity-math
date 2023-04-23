@@ -9,10 +9,15 @@ public class Fly : MonoBehaviour
     
     void Update()
     {
-        var translateX = Input.GetAxis("Horizontal") * speed;
-        var translateY = Input.GetAxis("VerticalY") * speed;
-        var translateZ = Input.GetAxis("Vertical") * speed;
+        var rotationX = Input.GetAxis("Vertical") * rotationSpeed;
+        var rotationY = Input.GetAxis("Horizontal") * rotationSpeed;
+        var rotationZ = Input.GetAxis("HorizontalZ") * rotationSpeed;
+        var translateZ = Input.GetAxis("VerticalY") * speed;
 
-        transform.position = new Vector3(transform.position.x + translateX, transform.position.y + translateY, transform.position.z + translateZ);
+        // Move object
+        transform.Translate(0, 0, translateZ);
+        
+        // Rotate object
+        transform.Rotate(rotationX, rotationY, rotationZ);
     }
 }
