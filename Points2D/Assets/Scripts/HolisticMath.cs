@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public static class HolisticMath
 {
@@ -38,6 +39,32 @@ public static class HolisticMath
     public static float Distance(Coords point1, Coords point2)
     {
         return Mathf.Sqrt( Square(point1.x - point2.x) + Square(point1.y - point2.y) + Square(point1.z - point2.z));
+    }
+
+    /// <summary>
+    /// Rotate vector and add to position.
+    /// <code>
+    /// t = (x + v.x, y + v.y, z + v.z)
+    /// </code>
+    /// </summary>
+    /// <param name="position">Current position</param>
+    /// <param name="vector">Vector to add</param>
+    /// <returns>Returns translated vector</returns>
+    public static Coords Translate(Coords position, Coords facing, Coords vector)
+    {
+        if (HolisticMath.Distance(new Coords(0, 0, 0), vector) <= 0) {
+            return position;
+        }
+        
+        var angle = HolisticMath.Angle(vector, facing);
+        var worldAngle = HolisticMath.Angle(vector, new Coords(0, 1, 0)); // So we can go backwards
+        var clockwise = HolisticMath.Cross(vector, facing).z < 0;
+        vector = HolisticMath.Rotate(vector, angle + worldAngle, clockwise);
+        
+        var xVal = position.x + vector.x;
+        var yVal = position.y + vector.y;
+        var zVal = position.z + vector.z;
+        return new Coords(xVal, yVal, zVal);
     }
 
     /// <summary>
