@@ -6,27 +6,39 @@ using UnityEngine.UI;
 
 public class Drive : MonoBehaviour
 {
-    public GameObject fuel;
-    public float speed = 5f;
-
-    private Vector3 _direction;
-    private const float StoppingDistance = 0.1f;
+    public float speed = 10.0f;
+    public float rotationSpeed = 100.0f;
+    public Text energyAmt;
+    Vector3 currentLocation;
 
     void Start()
     {
-        var fuelPosition = fuel.transform.position;
-        _direction = fuelPosition - this.transform.position;
-        var directionNormal = HolisticMath.NormalVector(new Coords(_direction));
-        _direction = directionNormal.ToVector3();
-        
-        HolisticMath.LookAt(this.transform, fuelPosition);
+        currentLocation = this.transform.position;
     }
-    
+
     void Update()
     {
-        if (HolisticMath.Distance(new Coords(this.transform.position), new Coords(fuel.transform.position)) > StoppingDistance)
-        {
-            this.transform.position += _direction * (speed * Time.deltaTime);
-        }
+        if (float.Parse(energyAmt.text) <= 0) return;
+
+        // Get the horizontal and vertical axis.
+        // By default they are mapped to the arrow keys.
+        // The value is in the range -1 to 1
+        float translation = Input.GetAxis("Vertical") * speed;
+        float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
+
+        // Make it move 10 meters per second instead of 10 meters per frame...
+        translation *= Time.deltaTime;
+        rotation *= Time.deltaTime;
+
+        // Move translation along the object's z-axis
+        transform.Translate(0, translation, 0);
+
+        // Rotate around our y-axis
+        transform.Rotate(0, 0, -rotation);
+
+        energyAmt.text = (float.Parse(energyAmt.text) - Vector3.Distance(currentLocation,
+                                             this.transform.position)) + "";
+
+        currentLocation = this.transform.position;
     }
 }

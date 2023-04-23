@@ -12,7 +12,7 @@ public class DrawLines : MonoBehaviour
     
     void DrawGeminiStarSign()
     {
-               var pollux = new Coords(2, 18);
+       var pollux = new Coords(2, 18);
        var castor = new Coords(5, 28);
        var alhena = new Coords(23, 8);
        
