@@ -975,8 +975,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 933802740}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: AddEnergy
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: SetAngle
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1507,6 +1507,8 @@ MonoBehaviour:
   speed: 10
   rotationSpeed: 100
   energyAmt: {fileID: 2061089507}
+  currentLocationText: {fileID: 923748017}
+  currentLocation: {x: 0, y: 0, z: 0}
 --- !u!1 &1402376377
 GameObject:
   m_ObjectHideFlags: 0
