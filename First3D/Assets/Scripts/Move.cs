@@ -8,11 +8,11 @@ public class Move : MonoBehaviour
 
     void Start()
     {
-        line = new Line(new Coords(start.position), new Coords(end.position));
+        //line = new Line(new Coords(start.position), new Coords(end.position), Line.LineTypeEnum.Segment);
     }
 
     void Update()
     {
-        this.transform.position = line.GetPointAt(Time.time).ToVector3();
+        this.transform.position = HolisticMath.Lerp(new Coords(start.position), new Coords(end.position), Time.time).ToVector3();
     }
 }

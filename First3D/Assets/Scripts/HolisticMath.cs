@@ -130,6 +130,16 @@ public static class HolisticMath
         return new Coords(xMult, yMult, zMult);
     }
 
+    public static Coords Lerp(Coords A, Coords B, float t)
+    {
+        t = Mathf.Clamp(t, 0, 1);
+        var v = new Coords(B.x - A.x, B.y - A.y, A.z - B.z);
+        var x = A.x + v.x * t;
+        var y = A.y + v.y * t;
+        var z = A.z + v.z * t;
+        return new Coords(x, y, z);
+    }
+
     #region Privates
     private static float Dot(Coords vector1, Coords vector2)
     {
