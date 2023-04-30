@@ -38,7 +38,7 @@ public class Line
     this.A = a;
     this.B = b;
     this.type = type;
-    v = new Coords(B.x - A.x, B.y - A.y, B.z - A.z);
+    v = new Coords(B.X - A.X, B.Y - A.Y, B.Z - A.Z);
   }
 
   /// <summary>
@@ -56,9 +56,9 @@ public class Line
     }
     
     
-    var xT = A.x + v.x * t;
-    var yT = A.y + v.y * t;
-    var zT = A.z + v.z * t;
+    var xT = A.X + v.X * t;
+    var yT = A.Y + v.Y * t;
+    var zT = A.Z + v.Z * t;
 
     return new Coords(xT, yT, zT);
   }

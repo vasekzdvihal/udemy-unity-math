@@ -2,39 +2,49 @@
 
 public class Coords
 {
-  public float x;
-  public float y;
-  public float z;
+  public float X;
+  public float Y;
+  public float Z;
 
-  public Coords(float _X, float _Y)
+  public Coords(float x, float y)
   {
-    this.x = _X;
-    this.y = _Y;
-    this.z = -1;
+    this.X = x;
+    this.Y = y;
+    this.Z = -1;
   }
 
-  public Coords(float _X, float _Y, float _Z)
+  public Coords(float x, float y, float z)
   {
-    this.x = _X;
-    this.y = _Y;
-    this.z = _Z;
+    this.X = x;
+    this.Y = y;
+    this.Z = z;
   }
 
   public Coords(Vector3 vector)
   {
-    this.x = vector.x;
-    this.y = vector.y;
-    this.z = vector.z;
+    this.X = vector.x;
+    this.Y = vector.y;
+    this.Z = vector.z;
   }
 
   public override string ToString()
   {
-    return $"X: {x} Y: {y} Z: {z}";
+    return $"X: {X} Y: {Y} Z: {Z}";
   }
 
   public Vector3 ToVector3()
   {
-    return new Vector3(x, y, z);
+    return new Vector3(X, Y, Z);
+  }
+
+  public static Coords operator + (Coords a, Coords b)
+  {
+    return new Coords(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
+  }
+
+  public static Coords operator -(Coords a, Coords b)
+  {
+    return new Coords(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
   }
 
   public static void DrawPoint(Coords position, float width, Color color)
@@ -46,8 +56,8 @@ public class Coords
       color = color
     };
     lineRenderer.positionCount = 2;
-    lineRenderer.SetPosition(0, new Vector3(position.x - width / 3.0f, position.y - width / 3.0f, position.z));
-    lineRenderer.SetPosition(1, new Vector3(position.x + width / 3.0f, position.y + width / 3.0f, position.z));
+    lineRenderer.SetPosition(0, new Vector3(position.X - width / 3.0f, position.Y - width / 3.0f, position.Z));
+    lineRenderer.SetPosition(1, new Vector3(position.X + width / 3.0f, position.Y + width / 3.0f, position.Z));
     lineRenderer.startWidth = width;
     lineRenderer.endWidth = width;
   }
@@ -59,8 +69,8 @@ public class Coords
     lineRenderer.material = new Material(Shader.Find("Unlit/Color"));
     lineRenderer.material.color = color;
     lineRenderer.positionCount = 2;
-    lineRenderer.SetPosition(0, new Vector3(start.x, start.y, start.z));
-    lineRenderer.SetPosition(1, new Vector3(end.x, end.y, end.z));
+    lineRenderer.SetPosition(0, new Vector3(start.X, start.Y, start.Z));
+    lineRenderer.SetPosition(1, new Vector3(end.X, end.Y, end.Z));
     lineRenderer.startWidth = width;
     lineRenderer.endWidth = width;
   }
