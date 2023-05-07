@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Line
 {
-  private Coords A;
-  private Coords B;
-  private Coords v;
+  public readonly Coords A;
+  public readonly Coords B;
+  public readonly Coords v;
 
   private LineTypeEnum type;
 

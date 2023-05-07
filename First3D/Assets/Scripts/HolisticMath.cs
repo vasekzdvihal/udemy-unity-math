@@ -130,6 +130,11 @@ public static class HolisticMath
         return new Coords(xMult, yMult, zMult);
     }
 
+    public static float Dot(Coords vector1, Coords vector2)
+    {
+        return vector1.X * vector2.X + vector1.Y * vector2.Y + vector1.Z * vector2.Z;
+    }
+
     public static Coords Lerp(Coords A, Coords B, float t)
     {
         t = Mathf.Clamp(t, 0, 1);
@@ -141,11 +146,6 @@ public static class HolisticMath
     }
 
     #region Privates
-
-    public static float Dot(Coords vector1, Coords vector2)
-    {
-        return vector1.X * vector2.X + vector1.Y * vector2.Y + vector1.Z * vector2.Z;
-    }
 
     private static float Square(float value)
     {
