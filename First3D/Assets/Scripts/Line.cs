@@ -48,6 +48,18 @@ public class Line
     this.v = v;
   }
 
+  public void Draw(float width, Color col)
+  {
+    Coords.DrawLine(A, B, width, col);
+  }
+
+  public float IntersectsAt(Line l)
+  {
+    var c = l.A - this.A;
+    var t = HolisticMath.Dot(Coords.Perp(l.v), c) / HolisticMath.Dot(Coords.Perp(l.v), v);
+    return t;
+  }
+
   /// <summary>
   /// <code>
   /// L(t) = A + v * t

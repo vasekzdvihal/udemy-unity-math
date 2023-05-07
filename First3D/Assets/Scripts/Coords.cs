@@ -47,6 +47,11 @@ public class Coords
     return new Coords(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
   }
 
+  public static Coords Perp(Coords v)
+  {
+    return new Coords(-v.Y, v.X);
+  }
+
   public static void DrawPoint(Coords position, float width, Color color)
   {
     var line = new GameObject("Point_" + position.ToString());
@@ -64,7 +69,7 @@ public class Coords
 
   public static void DrawLine(Coords start, Coords end, float width, Color color)
   {
-    var line = new GameObject($"Point_{start}_{end}");
+    var line = new GameObject($"Line_{start}_{end}");
     var lineRenderer = line.AddComponent<LineRenderer>();
     lineRenderer.material = new Material(Shader.Find("Unlit/Color"));
     lineRenderer.material.color = color;

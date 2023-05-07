@@ -141,7 +141,8 @@ public static class HolisticMath
     }
 
     #region Privates
-    private static float Dot(Coords vector1, Coords vector2)
+
+    public static float Dot(Coords vector1, Coords vector2)
     {
         return vector1.X * vector2.X + vector1.Y * vector2.Y + vector1.Z * vector2.Z;
     }
