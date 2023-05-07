@@ -46,6 +46,7 @@ public class Line
     this.A = a;
     this.B = a + v;
     this.v = v;
+    this.type = LineTypeEnum.Segment;
   }
 
   public void Draw(float width, Color col)
@@ -55,8 +56,17 @@ public class Line
 
   public float IntersectsAt(Line l)
   {
+    if (HolisticMath.Dot(Coords.Perp(l.v), v) == 0) {
+      return float.NaN;
+    }
+    
     var c = l.A - this.A;
     var t = HolisticMath.Dot(Coords.Perp(l.v), c) / HolisticMath.Dot(Coords.Perp(l.v), v);
+    
+    if (t is < 0 or > 1 && type == LineTypeEnum.Segment) {
+      return float.NaN;
+    }
+    
     return t;
   }
 
