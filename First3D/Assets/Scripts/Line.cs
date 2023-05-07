@@ -41,6 +41,13 @@ public class Line
     v = new Coords(B.X - A.X, B.Y - A.Y, B.Z - A.Z);
   }
 
+  public Line(Coords a, Coords v)
+  {
+    this.A = a;
+    this.B = a + v;
+    this.v = v;
+  }
+
   /// <summary>
   /// <code>
   /// L(t) = A + v * t
