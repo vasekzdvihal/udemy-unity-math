@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CreateWall : MonoBehaviour
 {
+    public GameObject ball;
+    
     private Line _wall;
     private Line _ballPath;
+    private Vector3 _pathNormal;
     private Line _trajectory;
-    public GameObject ball;
 
     // Start is called before the first frame update
     void Start()
@@ -16,25 +17,28 @@ public class CreateWall : MonoBehaviour
         _wall = new Line(new Coords(5, -2, 0), new Coords(0, 5, 0));
         _wall.Draw(1, Color.blue);
 
-        _ballPath = new Line(new Coords(-6, 0, 0), new Coords(100, 0, 0));
+        _ballPath = new Line(new Coords(-6, 2, 0), new Coords(100, -20, 0));
         _ballPath.Draw(0.1f, Color.yellow);
 
         ball.transform.position = _ballPath.A.ToVector3();
 
+        //ball path wall intersection
         var t = _ballPath.IntersectsAt(_wall);
         var s = _wall.IntersectsAt(_ballPath);
         
-        if (float.IsNaN(s) && float.IsNaN(t)) {
-            Debug.Log("Lines do not intersect");
-            return;
+        if (!float.IsNaN(t)  && !float.IsNaN(s)) {
+          _trajectory = new Line(_ballPath.A, _ballPath.Lerp(t), Line.LineTypeEnum.Segment);
         }
-
-        _trajectory = new Line(_ballPath.A, _ballPath.Lerp(t), Line.LineTypeEnum.Segment);
     }
 
     // Update is called once per frame
     void Update()
     {
+      if (Time.time <= 1) {
         ball.transform.position = _trajectory.Lerp(Time.time).ToVector3();
+      }
+      else {
+        ball.transform.position += _trajectory.Reflect(Coords.Perp(_wall.v)).ToVector3() * (Time.deltaTime * 5);
+      }
     }
 }

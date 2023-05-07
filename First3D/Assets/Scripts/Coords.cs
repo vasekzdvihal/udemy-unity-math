@@ -27,6 +27,12 @@ public class Coords
     this.Z = vector.z;
   }
 
+  public Coords GetNormal()
+  {
+    var magnitude = HolisticMath.Distance(new Coords(0, 0, 0), new Coords(X, Y, Z));
+    return new Coords(X / magnitude, Y / magnitude, Z / magnitude);
+  }
+
   public override string ToString()
   {
     return $"X: {X} Y: {Y} Z: {Z}";
@@ -45,6 +51,16 @@ public class Coords
   public static Coords operator -(Coords a, Coords b)
   {
     return new Coords(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
+  }
+
+  public static Coords operator *(Coords a, float b)
+  {
+    return new Coords(a.X * b, a.Y * b, a.Z * b);
+  }
+  
+  public static Coords operator /(Coords a, float b)
+  {
+    return new Coords(a.X / b, a.Y / b, a.Z / b);
   }
 
   public static Coords Perp(Coords v)

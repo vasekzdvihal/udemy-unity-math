@@ -2,33 +2,33 @@
 
 public class Plane
 {
-  private Coords _a;
-  private Coords _b;
-  private Coords _c;
-  private Coords _v;
-  private Coords _u;
+  public readonly Coords A;
+  public readonly Coords B;
+  public readonly Coords C;
+  public readonly Coords v;
+  public readonly Coords u;
 
   public Plane(Coords a, Coords b, Coords c)
   {
-    _a = a;
-    _b = b;
-    _c = c;
-    _v = b - a;
-    _u = c - a;
+    A = a;
+    B = b;
+    C = c;
+    v = b - a;
+    u = c - a;
   }
 
   public Plane(Coords a, Vector3 v, Vector3 u)
   {
-    _a = a;
-    _v = new Coords(v.X, v.Y, v.Z);
-    _u = new Coords(u.X, u.Y, u.Z);
+    A = a;
+    this.v = new Coords(v.X, v.Y, v.Z);
+    this.u = new Coords(u.X, u.Y, u.Z);
   }
 
   public Coords Lerp(float s, float t)
   {
-    var xst = _a.X + _v.X * s + _u.X * t;
-    var yst = _a.Y + _v.Y * s + _u.Y * t;
-    var zst = _a.Z + _v.Z * s + _u.Z * t;
+    var xst = A.X + v.X * s + u.X * t;
+    var yst = A.Y + v.Y * s + u.Y * t;
+    var zst = A.Z + v.Z * s + u.Z * t;
     
     return new Coords(xst, yst, zst);
   }

@@ -54,6 +54,29 @@ public class Line
     Coords.DrawLine(A, B, width, col);
   }
 
+  public Coords Reflect(Coords normal)
+  {
+    var norm = normal.GetNormal();
+    var vNorm = v.GetNormal();
+
+    var d = HolisticMath.Dot(norm, vNorm);
+    var vn2 = d * 2;
+    var r = vNorm - norm * vn2;
+    return r;
+  }
+
+  public float IntersectsAt(Plane p)
+  {
+    var normal = HolisticMath.Cross(p.u, p.v);
+
+    if (HolisticMath.Dot(normal, v) == 0) {
+      return float.NaN;
+    }
+    
+    var t = HolisticMath.Dot(normal, p.A - A) / HolisticMath.Dot(normal, v);
+    return t;
+  }
+  
   public float IntersectsAt(Line l)
   {
     if (HolisticMath.Dot(Coords.Perp(l.v), v) == 0) {
@@ -80,7 +103,7 @@ public class Line
     // Handle infinite lines
     if (type == LineTypeEnum.Segment) {
       t = Mathf.Clamp(t, 0, 1);
-    } else if (type == LineTypeEnum.Ray) {
+    } else if (type == LineTypeEnum.Ray && t < 0) {
       t = 0;
     }
     
