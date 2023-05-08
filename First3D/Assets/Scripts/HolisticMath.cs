@@ -1,6 +1,5 @@
-using Unity.VisualScripting;
+using Objects;
 using UnityEngine;
-using UnityEngine.Animations;
 
 public static class HolisticMath
 {
@@ -10,14 +9,6 @@ public static class HolisticMath
         var direction = target - transform.position;
 
         transform.up = Rotate(up, Angle(up, new Coords(direction)), Cross(up, NormalVector(new Coords(direction))).Z < 0).ToVector3();
-    }
-
-    public static Coords LookAt(Coords forwardVector, Coords position, Coords focusPoint)
-    {
-        var direction = new Coords(focusPoint.X - position.X, focusPoint.Y - position.Y, position.Z);
-        var angle = HolisticMath.Angle(forwardVector, direction);
-        var clockwise = Cross(forwardVector, direction).Z < 0;
-        return Rotate(forwardVector, angle, clockwise);
     }
 
     /// <summary>
@@ -130,11 +121,23 @@ public static class HolisticMath
         return new Coords(xMult, yMult, zMult);
     }
 
+    /// <summary>
+    /// <code>
+    /// a.b = ax * bx + ay * by + az * bz
+    /// </code>
+    /// </summary>
+    /// <param name="vector1">a</param>
+    /// <param name="vector2">b</param>
     public static float Dot(Coords vector1, Coords vector2)
     {
         return vector1.X * vector2.X + vector1.Y * vector2.Y + vector1.Z * vector2.Z;
     }
 
+    /// <summary>
+    /// <code>
+    /// v = ((A.x + v.X)*t, (A.y + v.y)*t, (A.z + v.z)*t)
+    /// </code>
+    /// </summary>
     public static Coords Lerp(Coords A, Coords B, float t)
     {
         t = Mathf.Clamp(t, 0, 1);
@@ -146,7 +149,6 @@ public static class HolisticMath
     }
 
     #region Privates
-
     private static float Square(float value)
     {
         return value * value;
