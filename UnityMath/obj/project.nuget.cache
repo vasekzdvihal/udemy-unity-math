@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PZCmiqkLsofdH4ezT6cPbYHk+GXdZJiY9dx3eCp2MFoC+5Xyb75DZU1GwG4LgEU6Qg5XemvehDt8RrKPDKYZgA==",
+  "dgSpecHash": "HLDRhMUpRpqz2VhIHFMKP+o/JoMUwCkNMMYkOhv8kg5WgTCDoDxxyQftB7o84i9cw+/+SZPDhqh2Ohy0jVMU6Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\zdvih\\source\\GitHub\\udemy-unity-math\\First3D\\Assembly-CSharp.csproj",
+  "projectFilePath": "C:\\Users\\zdvih\\source\\GitHub\\udemy-unity-math\\UnityMath\\Assembly-CSharp.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -7,6 +7,7 @@ namespace Objects
     public float X;
     public float Y;
     public float Z;
+    public float W;
 
     public Coords(float x, float y)
     {
@@ -20,6 +21,22 @@ namespace Objects
       this.X = x;
       this.Y = y;
       this.Z = z;
+    }
+
+    public Coords(float x, float y, float z, float w)
+    {
+      X = x;
+      Y = y;
+      Z = z;
+      W = w;
+    }
+
+    public Coords(Vector3 vecPos, float w)
+    {
+      X = vecPos.x;
+      Y = vecPos.y;
+      Z = vecPos.z;
+      W = w;
     }
 
     public Coords(Vector3 vector)
