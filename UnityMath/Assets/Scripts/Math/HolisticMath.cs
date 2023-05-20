@@ -34,6 +34,32 @@ public static class HolisticMath
     }
 
     /// <summary>
+    /// Scale vector using matrix multiplication.
+    /// <code>
+    /// Qx    sx 0 0 0    Px
+    /// Qy  = 0 sy 0 0  = Py
+    /// Qz    0 0 sz 0    Pz
+    /// 1     0 0 0  1    1
+    /// </code>
+    /// </summary>
+    public static Coords Scale(Coords position, float scaleX, float scaleY, float scaleZ)
+    {
+        var scaleValues = new[]
+        {
+            scaleX, 0, 0, 0,
+            0, scaleY, 0, 0,
+            0, 0, scaleZ, 0,
+            0, 0, 0, 1
+        };
+
+        var scaleMatrix = new Matrix(4, 4, scaleValues);
+        var pos = new Matrix(4, 1, position.AsFloats());
+
+        var result = scaleMatrix * pos;
+        return result.AsCoords();
+    }
+
+    /// <summary>
     /// Rotate and move vector using matrix multiplication.
     /// </summary>
     /// <param name="position">Current position</param>
