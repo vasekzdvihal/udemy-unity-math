@@ -1,3 +1,4 @@
+using Math;
 using Objects;
 using UnityEngine;
 
@@ -33,12 +34,36 @@ public static class HolisticMath
     }
 
     /// <summary>
-    /// Rotate vector and add to position.
+    /// Rotate and move vector using matrix multiplication.
+    /// </summary>
+    /// <param name="position">Current position</param>
+    /// <param name="vector">Vector to add</param>
+    /// <returns></returns>
+    public static Coords Translate(Coords position, Coords vector)
+    {
+        var translateValues = new[]
+        {
+            1, 0, 0, vector.X,
+            0, 1, 0, vector.Y,
+            0, 0, 1, vector.Z,
+            0, 0, 0, 1
+        };
+
+        var translateMatrix = new Matrix(4, 4, translateValues);
+        var pos = new Matrix(4, 1, position.AsFloats());
+
+        var result = translateMatrix * pos;
+        return result.AsCoords();
+    }
+
+    /// <summary>
+    /// Rotate and move vector and add to position.
     /// <code>
     /// t = (x + v.x, y + v.y, z + v.z)
     /// </code>
     /// </summary>
     /// <param name="position">Current position</param>
+    /// <param name="facing">TODO</param>
     /// <param name="vector">Vector to add</param>
     /// <returns>Returns translated vector</returns>
     public static Coords Translate(Coords position, Coords facing, Coords vector)

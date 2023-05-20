@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Objects
+namespace Math
 {
   public class Coords
   {
@@ -74,6 +74,11 @@ namespace Objects
     public Vector3 ToVector3()
     {
       return new Vector3(X, Y, Z);
+    }
+    
+    public float[] AsFloats()
+    {
+      return new[] {X, Y, Z, W};
     }
 
     #region Operators

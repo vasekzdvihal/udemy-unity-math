@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Math;
 using Objects;
 
 public class Matrix
@@ -20,7 +21,7 @@ public class Matrix
 
   public Coords AsCoords()
   {
-    if (_rows == 4 && _columns == 4) {
+    if (_rows == 4 && _columns == 1) {
       return new Coords(_values[0], _values[1], _values[2], _values[3]);
     }
 
