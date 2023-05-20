@@ -60,7 +60,68 @@ public static class HolisticMath
     }
 
     /// <summary>
-    /// Rotate and move vector using matrix multiplication.
+    /// Rotate vector using matrix multiplication.
+    /// <b>X Roll</b>
+    /// <code>
+    ///   1        0         0       0  
+    ///   0      cos(x)   -sin(x)    0  
+    ///   0      sin(x)    cos(x)    0    
+    ///   0        0         0       1    
+    /// </code>
+    /// <b>Y Roll</b>
+    ///  <code>
+    ///  cos(x)    0       sin(x)    0
+    ///   0        1         0       0
+    /// -sin(x)    0       cos(x)    0
+    ///   0        0         0       1 
+    /// </code>
+    /// <b>Z Roll</b>
+    ///  <code>
+    ///  cos(x) -sin(x)      0       0
+    ///  sin(x)  cos(x)      1       0
+    ///   0       0          0       0
+    ///   0       0          0       1 
+    /// </code>
+    /// </summary>
+    public static Coords Rotate(Coords position, float angleX, bool clockwiseX, float angleY, bool clockwiseY, float angleZ, bool clockwiseZ)
+    {
+        if (clockwiseX) angleX = 2 * Mathf.PI - angleX;
+        if (clockwiseY) angleY = 2 * Mathf.PI - angleY;
+        if (clockwiseZ) angleZ = 2 * Mathf.PI - angleZ;
+
+        var xRollValues = new[]
+        {
+            1, 0, 0, 0,
+            0, Mathf.Cos(angleX), -Mathf.Sin(angleX), 0,
+            0, Mathf.Sin(angleX), Mathf.Cos(angleX), 0,
+            0, 0, 0, 1
+        };
+        var xRoll = new Matrix(4, 4, xRollValues);
+
+        var yRollValues = new[]
+        {
+            Mathf.Cos(angleY), 0, Mathf.Sin(angleY), 0,
+            0, 1, 0, 0,
+            -Mathf.Sin(angleY), 0, Mathf.Cos(angleY), 0,
+            0, 0, 0, 1
+        };
+        var yRoll = new Matrix(4, 4, yRollValues);
+
+        var zRollValues = new[]
+        {
+            Mathf.Cos(angleZ), -Mathf.Sin(angleZ), 0, 0,
+            Mathf.Sin(angleZ), Mathf.Cos(angleZ), 0, 0,
+            0, 0, 1, 0,
+            0, 0, 0, 1,
+        };
+        var zRoll = new Matrix(4, 4, zRollValues);
+        var pos = new Matrix(4, 1, position.AsFloats());
+        var result = zRoll * yRoll * xRoll * pos;
+        return result.AsCoords();
+    }
+
+    /// <summary>
+    /// Move vector using matrix multiplication.
     /// </summary>
     /// <param name="position">Current position</param>
     /// <param name="vector">Vector to add</param>
