@@ -120,6 +120,40 @@ public static class HolisticMath
         return result.AsCoords();
     }
 
+    public static Coords Shear(Coords position, float shearX, float shearY, float shearZ)
+    {
+        var shearValues = new[]
+        {
+            1, shearY, shearZ, 0,
+            shearX, 1, shearZ, 0,
+            shearX, shearY, 1, 0,
+            0, 0, 0, 1,
+        };
+
+        var shearMatrix = new Matrix(4, 4, shearValues);
+        var pos = new Matrix(4, 1, position.AsFloats());
+
+        var result = shearMatrix * pos;
+        return result.AsCoords();
+    }
+    
+    public static Coords Reflect(Coords position)
+    {
+        var reflectValues = new float[]
+        {
+            -1, 0, 0, 0,
+            0, 1, 0, 0,
+            0, 0, 1, 0,
+            0, 0, 0, 1,
+        };
+
+        var reflectMatrix = new Matrix(4, 4, reflectValues);
+        var pos = new Matrix(4, 1, position.AsFloats());
+
+        var result = reflectMatrix * pos;
+        return result.AsCoords();
+    }
+
     /// <summary>
     /// Move vector using matrix multiplication.
     /// </summary>
