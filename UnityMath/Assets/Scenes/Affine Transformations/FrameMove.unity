@@ -404,6 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3525be6747e710e4fb794609dfbaa50a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eulerAngles: {x: 1, y: 1, z: 1}
 --- !u!114 &1175502695
 MonoBehaviour:
   m_ObjectHideFlags: 0

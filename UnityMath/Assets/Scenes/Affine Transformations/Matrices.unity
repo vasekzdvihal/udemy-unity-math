@@ -1553,12 +1553,12 @@ MonoBehaviour:
   - {fileID: 456095574}
   - {fileID: 1852744176}
   center: {fileID: 1427438558}
-  qAngle: 0
+  qAngle: 180
   angle: {x: 0, y: 0, z: 0}
   translation: {x: 0, y: 0, z: 0}
   scale: {x: 0, y: 0, z: 0}
   shear: {x: 0, y: 0, z: 0}
-  axis: {x: 0, y: 0, z: 1}
+  axis: {x: 1, y: 0, z: 1}
 --- !u!4 &2015177423
 Transform:
   m_ObjectHideFlags: 0
@@ -1588,7 +1588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   points:
   - {fileID: 1427438558}
-  angle: {x: 0, y: 0, z: 0}
+  angle: {x: 270, y: 0, z: 0}
 --- !u!1 &2040658485
 GameObject:
   m_ObjectHideFlags: 0

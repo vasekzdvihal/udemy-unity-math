@@ -17,7 +17,7 @@ namespace Math
         /// </summary>
         public static Coords NormalVector(Coords vector)
         {
-            var lenght = Distance(vector, new Coords(0, 0, 0));
+            var lenght = Distance(new Coords(0, 0, 0), vector);
             vector.X /= lenght;
             vector.Y /= lenght;
             vector.Z /= lenght;
@@ -164,7 +164,7 @@ namespace Math
         {
             var vx = (rotation.GetValue(2, 1) - rotation.GetValue(1, 2)) / (2 * Mathf.Sin(angle));
             var vy = (rotation.GetValue(0, 2) - rotation.GetValue(2, 0)) / (2 * Mathf.Sin(angle));
-            var vz = (rotation.GetValue(1, 1) - rotation.GetValue(0, 1)) / (2 * Mathf.Sin(angle));
+            var vz = (rotation.GetValue(1, 0) - rotation.GetValue(0, 1)) / (2 * Mathf.Sin(angle));
 
             return new Coords(vx, vy, vz, 0);
         }
@@ -172,8 +172,8 @@ namespace Math
         public static Coords QRotate(Coords position, Coords axis, float angle)
         {
             var aN = axis.GetNormal();
-            var w = Mathf.Cos(angle * Mathf.Deg2Rad / 2);
-            var s = Mathf.Sin(angle * Mathf.Deg2Rad / 2);
+            var w = Mathf.Cos(angle * Mathf.Deg2Rad / 2.0f);
+            var s = Mathf.Sin(angle * Mathf.Deg2Rad / 2.0f);
             var q = new Coords(aN.X * s, aN.Y * s, aN.Z * s, w);
 
             var quaternionValues = new float[]
@@ -189,6 +189,14 @@ namespace Math
 
             var result = quaternionMatrix * pos;
             return result.AsCoords();
+        }
+
+        public static Coords Quaternion(Coords axis, float angle)
+        {
+            var aN = axis.GetNormal();
+            var w = Mathf.Cos(angle / 2.0f);
+            var s = Mathf.Sin(angle / 2.0f);
+            return new Coords(aN.X * s, aN.Y * s, aN.Z * s, w);
         }
 
         public static Coords Shear(Coords position, float shearX, float shearY, float shearZ)
