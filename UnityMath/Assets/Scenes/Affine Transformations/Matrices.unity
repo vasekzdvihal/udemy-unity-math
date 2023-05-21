@@ -1536,6 +1536,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d16e9b023506741aaacdcd5c78e44f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineWidth: 0.1
+  lineColor: {r: 0.9085846, g: 0, b: 1, a: 1}
   points:
   - {fileID: 461043117}
   - {fileID: 1982604237}
@@ -1545,13 +1547,15 @@ MonoBehaviour:
   - {fileID: 1929414455}
   - {fileID: 1439752774}
   - {fileID: 2116547770}
+  - {fileID: 2116547770}
+  - {fileID: 2116547770}
+  - {fileID: 456095574}
+  - {fileID: 1852744176}
   center: {fileID: 1427438558}
   angle: {x: 0, y: 0, z: 0}
   translation: {x: 0, y: 0, z: 0}
   scale: {x: 0, y: 0, z: 0}
-  shear: {x: 0, y: 0, z: 0}
-  lineWidth: 0.02
-  lineColor: {r: 0, g: 1, b: 0, a: 1}
+  shear: {x: 0, y: 0.5, z: 0}
 --- !u!4 &2015177423
 Transform:
   m_ObjectHideFlags: 0
