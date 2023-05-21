@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\zdvih\\source\\GitHub\\udemy-unity-math\\First3D\\Assembly-CSharp.csproj": {}
+    "C:\\Users\\zdvih\\source\\GitHub\\udemy-unity-math\\UnityMath\\Assembly-CSharp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\zdvih\\source\\GitHub\\udemy-unity-math\\First3D\\Assembly-CSharp.csproj": {
+    "C:\\Users\\zdvih\\source\\GitHub\\udemy-unity-math\\UnityMath\\Assembly-CSharp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zdvih\\source\\GitHub\\udemy-unity-math\\First3D\\Assembly-CSharp.csproj",
+        "projectUniqueName": "C:\\Users\\zdvih\\source\\GitHub\\udemy-unity-math\\UnityMath\\Assembly-CSharp.csproj",
         "projectName": "Assembly-CSharp",
-        "projectPath": "C:\\Users\\zdvih\\source\\GitHub\\udemy-unity-math\\First3D\\Assembly-CSharp.csproj",
+        "projectPath": "C:\\Users\\zdvih\\source\\GitHub\\udemy-unity-math\\UnityMath\\Assembly-CSharp.csproj",
         "packagesPath": "C:\\Users\\zdvih\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zdvih\\source\\GitHub\\udemy-unity-math\\First3D\\obj\\",
+        "outputPath": "C:\\Users\\zdvih\\source\\GitHub\\udemy-unity-math\\UnityMath\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "configFilePaths": [

@@ -1,24 +1,29 @@
 using UnityEngine;
 
-namespace Movers
+namespace Behaviour
 {
     public class Fly : MonoBehaviour
     {
-        public float rotationSpeed = 1f;
-        public float speed = 1f;
-    
+        private const float Speed = 10.0f;
+        private const float RotationSpeed = 100.0f;
+
         void Update()
         {
-            var rotationX = Input.GetAxis("Vertical") * rotationSpeed;
-            var rotationY = Input.GetAxis("Horizontal") * rotationSpeed;
-            var rotationZ = Input.GetAxis("HorizontalZ") * rotationSpeed;
-            var translateZ = Input.GetAxis("VerticalY") * speed;
+            float translation = Input.GetAxis("Vertical") * Speed;
+            float rotation = Input.GetAxis("Horizontal") * RotationSpeed;
 
-            // Move object
-            transform.Translate(0, 0, translateZ);
-        
-            // Rotate object
-            transform.Rotate(rotationX, rotationY, rotationZ);
+            translation *= Time.deltaTime;
+            rotation *= Time.deltaTime;
+
+            Move(0, 0, translation);
+            transform.Rotate(0, rotation, 0);
+        }
+
+        void Move(float x, float y, float z)
+        {
+            var worldTransform = transform.localToWorldMatrix;
+            var planeWorldForward = worldTransform.GetColumn(2) * z;
+            transform.position += new Vector3(planeWorldForward.x, planeWorldForward.y, planeWorldForward.z);
         }
     }
 }
