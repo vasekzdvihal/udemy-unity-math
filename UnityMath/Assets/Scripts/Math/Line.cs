@@ -1,7 +1,6 @@
-using Math;
 using UnityEngine;
 
-namespace Objects
+namespace Math
 {
   public class Line
   {

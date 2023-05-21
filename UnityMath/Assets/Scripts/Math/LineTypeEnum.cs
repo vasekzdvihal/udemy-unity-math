@@ -1,4 +1,4 @@
-﻿namespace Objects
+﻿namespace Math
 {
   public enum LineTypeEnum
   {

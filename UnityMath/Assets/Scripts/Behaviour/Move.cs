@@ -1,8 +1,7 @@
 ﻿using Math;
-using Objects;
 using UnityEngine;
 
-namespace Movers
+namespace Behaviour
 {
     public class Move : MonoBehaviour
     {
