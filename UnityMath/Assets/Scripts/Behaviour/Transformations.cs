@@ -1,5 +1,6 @@
 using Math;
 using UnityEngine;
+using UnityEngine.Animations;
 
 namespace Behaviour
 {
@@ -11,12 +12,12 @@ namespace Behaviour
         
         public GameObject[] points;
         public GameObject center;
+        public float qAngle;
         public Vector3 angle;
         public Vector3 translation;
         public Vector3 scale;
         public Vector3 shear;
-
-
+        public Vector3 axis;
         
         void Start()
         {
@@ -27,7 +28,8 @@ namespace Behaviour
             // Scale(center);
             // Rotate(center);
             // Shear();
-            Reflect();
+            // Reflect();
+            Quaternion();
             
             ConnectPoints();
         }
@@ -83,6 +85,17 @@ namespace Behaviour
                 var position = new Coords(p.transform.position, 1);
                 p.transform.position = HolisticMath.Reflect(position).ToVector3();
             }
+        }
+
+        private void Quaternion()
+        {
+            foreach (var p in points) {
+                var position = new Coords(p.transform.position, 1);
+                var ax = new Coords(axis, 0);
+                p.transform.position = HolisticMath.QRotate(position, ax, qAngle).ToVector3();
+            }
+            
+            Coords.DrawLine(new Coords(0, 0, 0), new Coords(axis) * 3, 1f, Color.yellow);
         }
     }
 }

@@ -27,6 +27,11 @@ public class Matrix
 
     return null;
   }
+  
+  public float GetValue(int row, int column)
+  {
+    return _values[row * _columns + column];
+  }
 
   public static Matrix operator +(Matrix a, Matrix b)
   {
