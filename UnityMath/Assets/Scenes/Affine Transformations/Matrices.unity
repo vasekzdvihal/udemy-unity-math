@@ -977,7 +977,7 @@ Transform:
   m_GameObject: {fileID: 1427438558}
   m_LocalRotation: {x: -0, y: -0.0038109366, z: -0, w: 0.9999927}
   m_LocalPosition: {x: -13.5817375, y: 3.9862034, z: 14.479198}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1819650418}
@@ -1198,7 +1198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1819650417}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.209389, y: -4.0492034, z: -12.760613}
+  m_LocalPosition: {x: 7.96, y: -7.73, z: -10.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1517,6 +1517,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2015177423}
   - component: {fileID: 2015177422}
+  - component: {fileID: 2015177424}
   m_Layer: 0
   m_Name: TransformationManager
   m_TagString: Untagged
@@ -1552,12 +1553,12 @@ MonoBehaviour:
   - {fileID: 456095574}
   - {fileID: 1852744176}
   center: {fileID: 1427438558}
-  qAngle: 45
+  qAngle: 0
   angle: {x: 0, y: 0, z: 0}
   translation: {x: 0, y: 0, z: 0}
   scale: {x: 0, y: 0, z: 0}
-  shear: {x: 0, y: 0.5, z: 0}
-  axis: {x: 0, y: 0, z: 0}
+  shear: {x: 0, y: 0, z: 0}
+  axis: {x: 0, y: 0, z: 1}
 --- !u!4 &2015177423
 Transform:
   m_ObjectHideFlags: 0
@@ -1567,12 +1568,27 @@ Transform:
   m_GameObject: {fileID: 2015177421}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.2171226, y: 2.9082258, z: 2.9558754}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2015177424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015177421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e3bfe8a49913a4599b1d9328da5714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points:
+  - {fileID: 1427438558}
+  angle: {x: 0, y: 0, z: 0}
 --- !u!1 &2040658485
 GameObject:
   m_ObjectHideFlags: 0
