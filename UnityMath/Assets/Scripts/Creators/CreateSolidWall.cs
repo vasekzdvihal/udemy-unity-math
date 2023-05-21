@@ -1,6 +1,6 @@
 using Math;
-using Objects;
 using UnityEngine;
+using Plane = Math.Plane;
 
 namespace Creators
 {

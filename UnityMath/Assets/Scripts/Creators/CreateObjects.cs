@@ -1,24 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CreateObjects : MonoBehaviour {
+namespace Creators
+{
+	public class CreateObjects : MonoBehaviour {
 
-    public GameObject objPrefab;
-    public Vector3 objPosition;
+		public GameObject objPrefab;
+		public Vector3 objPosition;
 
-    // Use this for initialization
-	void Awake () {
-        GameObject obj = Instantiate(objPrefab, new Vector3(Random.Range(-100, 100),
-                                                   Random.Range(-100, 100),
-                                                    objPrefab.transform.position.z), 
-                                     Quaternion.identity);
-        //Debug.Log("Fuel Location: " + obj.transform.position);
-        objPosition = obj.transform.position;
-    }
+		// Use this for initialization
+		void Awake () {
+			GameObject obj = Instantiate(objPrefab, new Vector3(Random.Range(-100, 100),
+					Random.Range(-100, 100),
+					objPrefab.transform.position.z), 
+				Quaternion.identity);
+			//Debug.Log("Fuel Location: " + obj.transform.position);
+			objPosition = obj.transform.position;
+		}
 	
-	// Update is called once per frame
-	void Update () {
+		// Update is called once per frame
+		void Update () {
 		
+		}
 	}
 }

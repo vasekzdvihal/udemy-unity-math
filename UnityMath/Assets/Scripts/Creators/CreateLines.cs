@@ -1,5 +1,4 @@
 using Math;
-using Objects;
 using UnityEngine;
 
 namespace Creators
@@ -29,5 +28,9 @@ namespace Creators
             var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             sphere.transform.position = _l1.Lerp(intersectT).ToVector3();
         }
+    }
+
+    class CreateLinesImpl : CreateLines
+    {
     }
 }

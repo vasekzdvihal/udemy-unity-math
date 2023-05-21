@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DefaultNamespace
+namespace Bitwise
 {
     public class BitwiseOperations
     {
